@@ -14,4 +14,9 @@ class ElementAttributes extends Collection
             return $output .= " {$attribute['name']}=\"{$attribute['value']}\"";
         }, '');
     }
+
+    public function __toString()
+    {
+        return $this->escapedString();
+    }
 }

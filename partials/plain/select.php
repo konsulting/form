@@ -1,8 +1,8 @@
 <?php $this->layout('layout', get_defined_vars()) ?>
-<select<?= $element->visibleAttributes()->escapedString() ?>>
-    <?php if($element->isGrouped()) : ?>
+<select<?= $element->attributes() ?>>
+    <?php if ($element->isGrouped()) : ?>
         <?php foreach($element->options() as $group => $options) : ?>
-            <optgroup label="">
+            <optgroup label="<?= $group ?>">
                 <?= $this->insert('select-options', ['options' => $options, 'element' => $element]) ?>
             </optgroup>
         <?php endforeach ?>

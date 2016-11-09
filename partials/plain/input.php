@@ -2,9 +2,9 @@
     <?php $this->layout('layout', get_defined_vars()) ?>
 <?php endif ?>
 <?php if ($element->type != 'static') : ?>
-    <input<?= $element->visibleAttributes()->escapedString() ?>>
+    <input<?= $element->attributes() ?>>
 <?php else: ?>
-    <p class="input-static" <?= $element->visibleAttributes()->except(['value', 'class'])->escapedString() ?>>
-        <?= $element->visibleAttributes()->get('value') ?>
+    <p class="input-static" <?= $element->attributesExcept(['value', 'class']) ?>>
+        <?= $element->attributes('value') ?>
     </p>
 <?php endif ?>

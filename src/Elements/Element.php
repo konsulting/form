@@ -89,8 +89,21 @@ class Element
         ]));
     }
 
-    public function visibleAttributes()
+    public function attributes()
     {
-        return $this->attributes;
+        if (func_num_args() == 0) {
+            return $this->attributes;
+        }
+
+        return $this->attributes->only((array) func_get_args());
+    }
+
+    public function attributesExcept()
+    {
+        if (func_num_args() == 0) {
+            return $this->attributes;
+        }
+
+        return $this->attributes->except((array) func_get_args());
     }
 }

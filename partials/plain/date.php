@@ -1,2 +1,2 @@
 <?php $this->layout('layout', get_defined_vars()) ?>
-<input type="datetime"<?= $element->visibleAttributes()->escapedString() ?>>
+<input type="datetime"<?= $element->attributes() ?>>
