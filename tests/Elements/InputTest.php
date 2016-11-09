@@ -39,6 +39,14 @@ class InputTest extends TestCase
         $this->assertRegexp('/Error/', (string) $input);
     }
 
+    public function test_it_will_add_feedback()
+    {
+        $input = new Input($this->partialsEngine, 'text', 'test');
+        $input->withFeedback('success', 'Success');
+
+        $this->assertRegexp('/Success/', (string) $input);
+    }
+
     public function test_it_will_add_a_block_before()
     {
         $input = new Input($this->partialsEngine, 'text', 'test');

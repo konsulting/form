@@ -2,4 +2,4 @@
 <?php if($element->forceValue) : ?>
     <input type="hidden" name="<?= $this->escape($element->name) ?>" value="<?= $this->escape($element->forceValue) ?>">
 <?php endif ?>
-<input<?= $element->attributes() ?><?= $element->checked ? 'checked' : '' ?>>
+<input<?= $element->attributes() ?><?= $element->checked ? ' checked' : '' ?>>

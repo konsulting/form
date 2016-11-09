@@ -17,7 +17,7 @@ class FormBuilder
 
     public function __call($name, $arguments)
     {
-        return $this->make($name);
+        return $this->make($name, ...$arguments);
     }
 
     public function input($type = 'text', $name = null, $value = null)

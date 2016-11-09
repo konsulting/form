@@ -13,12 +13,12 @@ class DateTime extends Date
         $this->withSeconds = true;
     }
 
-    public function withOutSeconds()
+    public function withoutSeconds()
     {
         $this->withSeconds = false;
     }
 
-    protected function timeFormat()
+    public function timeFormat()
     {
         return $this->timeFormat . ($this->withSeconds ? '|seconds' : '');
     }

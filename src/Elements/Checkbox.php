@@ -8,7 +8,8 @@ class Checkbox extends Element
 {
     protected $partialName = 'checkbox-radio';
     protected $forceValue;
-    protected $writableProperties = ['label', 'error', 'prepend', 'append', 'showLabel', 'forceValue'];
+    protected $checked;
+    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'forceValue', 'checked', 'addons'];
 
     public function __construct(Engine $partial, $name = null, $value = null)
     {
@@ -29,6 +30,13 @@ class Checkbox extends Element
     public function dontForceValue()
     {
         $this->forceValue = null;
+
+        return $this;
+    }
+
+    public function checked($bool = true)
+    {
+        $this->checked = $bool;
 
         return $this;
     }

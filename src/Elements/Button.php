@@ -8,7 +8,7 @@ class Button extends Element
 {
     protected $partialName = 'button';
     protected $text;
-    protected $writableProperties = ['error', 'prepend', 'append', 'text'];
+    protected $writableProperties = ['feedback', 'feedbackType', 'prepend', 'append', 'text', 'addons'];
 
     public function __construct(Engine $partial, $type = 'submit', $text = null)
     {
