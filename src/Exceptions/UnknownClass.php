@@ -1,6 +1,6 @@
 <?php
-namespace Konsulting\FormBuilder;
+namespace Konsulting\FormBuilder\Exceptions;
 
-class UnknownElement extends \Exception {
+class UnknownClass extends \Exception {
 
 }

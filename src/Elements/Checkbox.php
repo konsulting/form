@@ -10,7 +10,7 @@ class Checkbox extends Element
     protected $forceValue;
     protected $writableProperties = ['label', 'error', 'prepend', 'append', 'showLabel', 'forceValue'];
 
-    public function __construct(Engine $partial, $name, $value = null)
+    public function __construct(Engine $partial, $name = null, $value = null)
     {
         parent::__construct($partial);
 

@@ -2,6 +2,8 @@
 
 namespace Konsulting\FormBuilder;
 
+use Konsulting\FormBuilder\Exceptions\UnknownClass;
+
 class ClassResolver
 {
     protected $namespaces = [];
