@@ -29,6 +29,13 @@ class Element
         $this->addons = Collection::make([]);
     }
 
+    public function withValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
     public function withLabel($label)
     {
         $this->label = $label;

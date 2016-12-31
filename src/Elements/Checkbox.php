@@ -4,7 +4,7 @@ namespace Konsulting\FormBuilder\Elements;
 
 use League\Plates\Engine;
 
-class Checkbox extends Element
+class Checkbox extends Element implements Checkable
 {
     protected $partialName = 'checkbox-radio';
     protected $forceValue;

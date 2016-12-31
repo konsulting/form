@@ -17,29 +17,36 @@ class Date extends Element
         parent::__construct($partial);
 
         $this->name = $name;
-        $this->value = $value;
+        $this->withValue($value);
     }
 
     public function __set($name, $value)
     {
-        if ($name == 'value') {
-            $value = $this->prepareValue($value);
-        }
-
         parent::__set($name, $value);
+    }
+
+    public function withValue($value)
+    {
+        $this->value = $this->prepareValue($value);
+
+        return $this;
     }
 
     public function prepareValue($value)
     {
         if (empty($value)) {
-            return '';
+            return null;
         }
 
         $dateTime = \DateTime::createFromFormat(DateTimeFormats::persistenceFormat($this->timeFormat()), $value);
 
+        if (! $dateTime) {
+            $dateTime = \DateTime::createFromFormat(DateTimeFormats::displayFormat($this->timeFormat()), $value);
+        }
+
         return $dateTime
             ? $dateTime->format(DateTimeFormats::displayFormat($this->timeFormat()))
-            : '';
+            : null;
     }
 
     public function timeFormat()

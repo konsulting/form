@@ -25,16 +25,27 @@ class Select extends Element
     public function withOptions($options)
     {
         $this->options = Collection::make($options);
+
+        return $this;
     }
 
     public function withSelected($selected)
     {
         $this->selected = Collection::make((array) $selected);
+
+        return $this;
+    }
+
+    public function withValue($value)
+    {
+        return $this->withSelected($value);
     }
 
     public function withPrimaryOption($name, $value)
     {
         $this->primaryOption = ['name' => $name, 'value' => $value];
+
+        return $this;
     }
 
     public function options()
