@@ -15,11 +15,12 @@ class Element
     protected $prepend;
     protected $append;
     protected $addons;
+    protected $tooltip;
 
     protected $attributes = [];
     protected $partial;
     protected $partialName = 'element';
-    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'addons'];
+    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'addons', 'tooltip'];
 
     public function __construct(Engine $partial)
     {
@@ -184,5 +185,12 @@ class Element
     public function getLabelFor()
     {
         return $this->id;
+    }
+
+    public function withTooltip($text)
+    {
+        $this->tooltip = $text;
+
+        return $this;
     }
 }

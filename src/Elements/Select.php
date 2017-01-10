@@ -11,7 +11,7 @@ class Select extends Element
     protected $options = [];
     protected $selected;
     protected $primaryOption;
-    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'addons'];
+    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'addons', 'tooltip'];
 
     public function __construct(Engine $partial, $name = null, $options = [], $selected = null)
     {

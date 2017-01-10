@@ -10,7 +10,7 @@ class Date extends Element
     protected $partialName = 'date-time';
     protected $timeFormat = 'date';
     protected $split = false;
-    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'split', 'addons'];
+    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'split', 'addons', 'tooltip'];
 
     public function __construct(Engine $partial, $name = null, $value = null)
     {

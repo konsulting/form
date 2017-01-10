@@ -9,7 +9,7 @@ class Checkbox extends Element implements Checkable
     protected $partialName = 'checkbox-radio';
     protected $forceValue;
     protected $checked;
-    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'forceValue', 'checked', 'addons'];
+    protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'forceValue', 'checked', 'addons', 'tooltip'];
 
     public function __construct(Engine $partial, $name = null, $value = null)
     {
