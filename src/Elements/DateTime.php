@@ -20,6 +20,6 @@ class DateTime extends Date
 
     public function timeFormat()
     {
-        return $this->timeFormat . ($this->withSeconds ? '|seconds' : '');
+        return $this->timeFormat . ($this->withSeconds ? '-with-seconds' : '');
     }
 }

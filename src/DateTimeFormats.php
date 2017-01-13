@@ -6,16 +6,18 @@ class DateTimeFormats
 {
     protected static $formatsToPersist = [
         'date' => 'Y-m-d',
-        'time' => 'H:i',
-        'datetime' => 'Y-m-d H:i',
-        'append_seconds' => ':s',
+        'time' => 'H:i:s',
+        'datetime' => 'Y-m-d H:i:s',
+        'time-with-seconds' => 'H:i:s',
+        'datetime-with-seconds' => 'Y-m-d H:i:s'
     ];
 
     protected static $formatsToDisplay = [
         'date' => 'Y-m-d',
         'time' => 'H:i',
         'datetime' => 'Y-m-d H:i',
-        'append_seconds' => ':s',
+        'time-with-seconds' => 'H:i:s',
+        'datetime-with-seconds' => 'Y-m-d H:i:s'
     ];
 
     protected static $parts = [
@@ -47,24 +49,16 @@ class DateTimeFormats
         }
     }
 
-    public static function persistenceFormat($signature)
+    public static function persistenceFormat($name)
     {
-        return array_reduce(explode('|', $signature), function($format, $name) {
-            static::checkName($name);
-            $format .= static::$formatsToPersist[$name];
-
-            return $format;
-        }, '');
+        static::checkName($name);
+        return static::$formatsToPersist[$name];
     }
 
-    public static function displayFormat($signature)
+    public static function displayFormat($name)
     {
-        return array_reduce(explode('|', $signature), function($format, $name) {
-            static::checkName($name);
-            $format .= static::$formatsToDisplay[$name];
-
-            return $format;
-        }, '');
+        static::checkName($name);
+        return static::$formatsToDisplay[$name];
     }
 
     public static function split($date, $format)
