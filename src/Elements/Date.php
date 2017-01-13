@@ -38,6 +38,10 @@ class Date extends Element
             return null;
         }
 
+        if ($value instanceof \DateTimeInterface) {
+            return $value->format(DateTimeFormats::displayFormat($this->timeFormat()));
+        }
+
         $dateTime = \DateTime::createFromFormat(DateTimeFormats::persistenceFormat($this->timeFormat()), $value);
 
         if (! $dateTime) {
