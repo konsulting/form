@@ -11,7 +11,7 @@ class Checkbox extends Element implements Checkable
     protected $checked;
     protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'forceValue', 'checked', 'addons', 'tooltip'];
 
-    public function __construct(Engine $partial, $name = null, $value = null)
+    public function __construct(Engine $partial, $name = null, $value = 1)
     {
         parent::__construct($partial);
 
