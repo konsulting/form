@@ -5,7 +5,9 @@ namespace Konsulting\FormBuilder;
 class DateTimeFormats
 {
     protected static $formatsToPersist = [
-        'date' => 'Y-m-d',
+        // Date persistence format is same as Date format as date is expressed as datetime
+        // when converting object to array.
+        'date' => 'Y-m-d H:i:s',
         'time' => 'H:i:s',
         'datetime' => 'Y-m-d H:i:s',
         'time-with-seconds' => 'H:i:s',
