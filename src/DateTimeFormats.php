@@ -5,8 +5,7 @@ namespace Konsulting\FormBuilder;
 class DateTimeFormats
 {
     protected static $formatsToPersist = [
-        // Date persistence format is same as Date format as date is expressed as datetime
-        // when converting object to array.
+        // Date persistence format is same as Date format since date is expressed as datetime in mysql
         'date' => 'Y-m-d H:i:s',
         'time' => 'H:i:s',
         'datetime' => 'Y-m-d H:i:s',
@@ -86,7 +85,16 @@ class DateTimeFormats
         $splitFormat = str_split($format);
 
         $combined = array_reduce($splitFormat, function ($result, $key) use ($dateArray) {
-            $result .= isset(static::$parts[$key]) ? $dateArray[static::$parts[$key]['name']] : $key;
+            if (isset(static::$parts[$key])) {
+                // there was an issue if a date cast to Carbon by Laravel but in some cases we didn't include
+                // all of the data (e.g. trailing H:i:s), so if that is the case, we'll add dummy zeros.
+                // I expect there is a better solution to this but we're pushed for time right now.
+
+                $result.= isset($dateArray[static::$parts[$key]['name']]) ? $dateArray[static::$parts[$key]['name']] : '00';
+            } else {
+                $result .= $key;
+            }
+
             return $result;
         }, '');
 
