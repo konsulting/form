@@ -33,7 +33,7 @@
 
         <?php /* FEEDBACK */ ?>
         <?php if ($element->feedback) : ?>
-            <div class="help-block">
+            <div class="help-block help-block-feedback">
                 <?= $this->escape($element->feedback) ?>
             </div>
             <?= $this->insert('feedback-icons', ['element' => $element]) ?>
