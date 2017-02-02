@@ -24,5 +24,5 @@
             </div>
         <?php endforeach ?>
     </div>
-    <input type="hidden" id="<?= $this->escape($element->name) ?>_combined">
+    <input type="hidden" id="combined__<?= $this->escape($element->name) ?>">
 <?php endif ?>
