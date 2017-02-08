@@ -24,7 +24,7 @@
             placeholder="<?= $element->getSplitPlaceholders()[$name] ?>"
             maxlength="<?= strlen($element->getSplitPlaceholders()[$name]) ?>"
             class="form-control" id="<?= $element->attributes()->get('id') . '-' . $count ?>"
-            style="width: <?= 100 / count($split) ?>%; display: inline-block"
+            style="width: <?= 100 / count($split) ?>%; min-width: 95px; display: inline-block"
             ><?php endforeach ?>
     </div>
     <input type="hidden" id="combined__<?= $this->escape($element->name) ?>">
