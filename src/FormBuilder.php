@@ -35,6 +35,16 @@ class FormBuilder
         return $this->input('email', $name, $value);
     }
 
+    public function tel($name = null, $value = null)
+    {
+        return $this->input('tel', $name, $value);
+    }
+
+    public function phone($name = null, $value = null)
+    {
+        return $this->tel($name, $value);
+    }
+
     public function make()
     {
         $arguments = func_get_args();
