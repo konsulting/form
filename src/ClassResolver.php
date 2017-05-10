@@ -26,7 +26,7 @@ class ClassResolver
     protected function locateClass($name)
     {
         foreach ($this->namespaces as $namespace) {
-            $full = $namespace . $name;
+            $full = $namespace . ucfirst($name);
 
             if (class_exists($full)) {
                 return $full;

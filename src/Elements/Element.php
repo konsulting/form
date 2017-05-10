@@ -3,9 +3,10 @@
 namespace Konsulting\FormBuilder\Elements;
 
 use Illuminate\Support\Collection;
+use Konsulting\FormBuilder\FormBuilder;
 use League\Plates\Engine;
 
-class Element
+class Element implements ElementInterface
 {
     protected $label;
     protected $showLabel = true;
@@ -21,6 +22,11 @@ class Element
     protected $partial;
     protected $partialName = 'element';
     protected $writableProperties = ['label', 'feedback', 'feedbackType', 'prepend', 'append', 'showLabel', 'addons', 'tooltip'];
+
+    /**
+     * @var FormBuilder
+     */
+    protected $builder;
 
     public function __construct(Engine $partial)
     {
@@ -192,5 +198,18 @@ class Element
         $this->tooltip = $text;
 
         return $this;
+    }
+
+    public function setBuilder($builder)
+    {
+        $this->builder = $builder;
+    }
+
+    /**
+     * @return FormBuilder
+     */
+    public function builder()
+    {
+        return $this->builder;
     }
 }

@@ -6,9 +6,10 @@ use League\Plates\Engine;
 
 class FormBuilder
 {
+    protected $decorators = [];
     protected $partial;
     protected $elementResolver;
-
+    protected $formName;
     public function __construct(Engine $partial, ClassResolver $elementResolver)
     {
         $this->partial = $partial;
@@ -45,13 +46,46 @@ class FormBuilder
         return $this->tel($name, $value);
     }
 
-    public function make()
+    public function make($name, ...$arguments)
     {
-        $arguments = func_get_args();
-        $name = ucfirst(array_shift($arguments));
-
         $class = $this->elementResolver->resolve($name);
+        $field = new $class($this->partial, ...$arguments);
 
-        return new $class($this->partial, ...$arguments);
+        $field->setBuilder($this);
+
+        return $this->decorate($field);
+    }
+
+    protected function decorate($field)
+    {
+        foreach ($this->decorators as $decorator) {
+            $field = new $decorator($field);
+        }
+
+        return $field;
+    }
+
+    public function setDecorators($decorators)
+    {
+        $this->decorators = (array) $decorators;
+    }
+
+    public function addDecorators($decorators)
+    {
+        $this->decorators = array_merge($this->decorators, (array) $decorators);
+
+        return $this;
+    }
+
+    public function getFormName()
+    {
+        return $this->formName;
+    }
+
+    public function setFormName($formName)
+    {
+        $this->formName = $formName;
+
+        return $this;
     }
 }
