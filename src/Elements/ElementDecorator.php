@@ -2,9 +2,6 @@
 
 namespace Konsulting\FormBuilder\Elements;
 
-use Konsulting\FormBuilder\Elements\Element;
-use Konsulting\FormBuilder\Elements\ElementInterface;
-
 class ElementDecorator implements ElementInterface
 {
     /**

@@ -9,7 +9,16 @@ class FormBuilder
     protected $decorators = [];
     protected $partial;
     protected $elementResolver;
+
+    // Perhaps should be in a separate Form object...
     protected $formName;
+    protected $isHorizontal;
+    protected $horizontalClasses = [
+        'input' => 'col-sm-2',
+        'control' => 'col-sm-10',
+        'checkbox' => 'col-sm-offset-2 col-sm-10'
+    ];
+
     public function __construct(Engine $partial, ClassResolver $elementResolver)
     {
         $this->partial = $partial;
@@ -87,5 +96,34 @@ class FormBuilder
         $this->formName = $formName;
 
         return $this;
+    }
+
+    public function horizontal($inputClass = null, $controlClass = null)
+    {
+        $this->isHorizontal = true;
+
+        $this->horizontalClasses['input'] = $inputClass ?: $this->horizontalClasses['input'];
+        $this->horizontalClasses['control'] = $controlClass ?: $this->horizontalClasses['control'];
+
+        return $this;
+    }
+
+    public function notHorizontal()
+    {
+        $this->isHorizontal = false;
+    }
+
+    public function isHorizontal()
+    {
+        return $this->isHorizontal;
+    }
+
+    public function horizontalClass($class)
+    {
+        if (! in_array($class, ['input', 'control', 'checkbox'])) {
+            throw new \UnexpectedValueException("Unknown element {$class}.");
+        }
+
+        return $this->isHorizontal() ? $this->horizontalClasses[$class] : '';
     }
 }

@@ -7,13 +7,18 @@
     <?php /* LABEL */ ?>
     <div class="form-group<?= $element->feedback ? ' has-' . $element->feedbackType : '' ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
         <?php if ($element->label) : ?>
-            <label for="<?= $this->escape($element->getLabelFor()) ?>" class="control-label">
+            <label for="<?= $this->escape($element->getLabelFor()) ?>"
+                   class="control-label <?= $element->builder->horizontalClass('input') ?>">
                 <?= $this->escape($element->label) ?>
 
                 <?php /* TOOLTIP */ ?>
                 <?php $this->insert('tooltip', compact('element')); ?>
 
             </label>
+        <?php endif ?>
+
+        <?php if ($element->builder->isHorizontal()) : ?>
+            <div class="<?= $element->builder->horizontalClass('control') ?>">
         <?php endif ?>
 
         <?php /* ADDONS */ ?>
@@ -43,6 +48,10 @@
         <?php if ($element->help) : ?>
             <div class="help-block help-block-plain">
                 <?= $this->escape($element->help) ?>
+            </div>
+        <?php endif ?>
+
+        <?php if ($element->builder->isHorizontal()) : ?>
             </div>
         <?php endif ?>
     </div>

@@ -4,10 +4,14 @@
     <?php endif ?>
 
     <?php if ($element->feedback): ?>
-    <div class="has-<?= $element->feedbackType ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
+        <div class="has-<?= $element->feedbackType ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
+    <?php endif ?>
+
+        <?php if ($element->builder->isHorizontal()) : ?>
+            <div class="<?= $element->builder->horizontalClass('checkbox') ?>">
         <?php endif ?>
 
-        <div class="checkbox">
+            <div class="checkbox">
             <label>
                 <?= $this->section('content') ?>
                 <?= $this->escape($element->label) ?>
@@ -28,11 +32,15 @@
                     <?= $this->escape($element->help) ?>
                 </div>
             <?php endif ?>
+
+            <?php if ($element->builder->isHorizontal()) : ?>
+                </div>
+            <?php endif ?>
         </div>
 
         <?php if ($element->feedback): ?>
-    </div>
-<?php endif ?>
+            </div>
+        <?php endif ?>
 
     <?php if ($element->append) : ?>
         <?= $element->append ?>
