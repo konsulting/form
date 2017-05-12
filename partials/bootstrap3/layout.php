@@ -8,7 +8,7 @@
     <div class="form-group<?= $element->feedback ? ' has-' . $element->feedbackType : '' ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
         <?php if ($element->label) : ?>
             <label for="<?= $this->escape($element->getLabelFor()) ?>"
-                   class="control-label <?= $element->builder->horizontalClass('input') ?>">
+                   class="control-label <?= $element->builder ? $element->builder->horizontalClass('input') : '' ?>">
                 <?= $this->escape($element->label) ?>
 
                 <?php /* TOOLTIP */ ?>
@@ -17,7 +17,7 @@
             </label>
         <?php endif ?>
 
-        <?php if ($element->builder->isHorizontal()) : ?>
+        <?php if ($element->builder && $element->builder->isHorizontal()) : ?>
             <div class="<?= $element->builder->horizontalClass('control') ?>">
         <?php endif ?>
 
@@ -51,7 +51,7 @@
             </div>
         <?php endif ?>
 
-        <?php if ($element->builder->isHorizontal()) : ?>
+        <?php if ($element->builder && $element->builder->isHorizontal()) : ?>
             </div>
         <?php endif ?>
     </div>

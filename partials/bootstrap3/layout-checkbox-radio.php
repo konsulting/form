@@ -7,7 +7,7 @@
         <div class="has-<?= $element->feedbackType ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
     <?php endif ?>
 
-        <?php if ($element->builder->isHorizontal()) : ?>
+        <?php if ($element->builder && $element->builder->isHorizontal()) : ?>
             <div class="<?= $element->builder->horizontalClass('checkbox') ?>">
         <?php endif ?>
 
@@ -33,7 +33,7 @@
                 </div>
             <?php endif ?>
 
-            <?php if ($element->builder->isHorizontal()) : ?>
+            <?php if ($element->builder && $element->builder->isHorizontal()) : ?>
                 </div>
             <?php endif ?>
         </div>
