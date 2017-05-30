@@ -188,4 +188,9 @@ class ElementDecorator implements ElementInterface
 
         return $this;
     }
+
+    public function baseElement()
+    {
+        return $this->element instanceof ElementDecorator ? $this->element->baseElement() : $this->element;
+    }
 }

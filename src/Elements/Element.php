@@ -212,4 +212,9 @@ class Element implements ElementInterface
     {
         return $this->builder;
     }
+
+    public function baseElement()
+    {
+        return $this;
+    }
 }
