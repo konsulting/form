@@ -10,21 +10,22 @@
         </span>
     </div>
 <?php else : ?>
-    <div class="split-date">
+    <div class="split-date <?= $element->timeFormat() ?>">
         <?php
-            $split = $element->getSplitValue();
-            $count = 0;
+        $count = 0;
         ?>
-        <?php foreach ($split as $name => $value) :
+        <?php foreach ($element->getSplitValue() as $name => $value) :
             $count ++;
+            $maxLength = strlen($element->getSplitPlaceholders()[$name]);
                 ?><input
             type="text"
             name="<?= $this->escape($element->name) ?>[<?= $this->escape($name) ?>]"
             value="<?= $this->escape($value) ?>"
             placeholder="<?= $element->getSplitPlaceholders()[$name] ?>"
-            maxlength="<?= strlen($element->getSplitPlaceholders()[$name]) ?>"
-            class="form-control" id="<?= $element->attributes()->get('id') . '-' . $count ?>"
-            style="width: <?= 100 / count($split) ?>%; min-width: 75px; display: inline-block"
+            maxlength="<?= $maxLength ?>"
+            class="form-control split-date-<?= $name ?>" id="<?= $element->attributes()->get('id') . '-' . $count ?>"
+            style="display: inline-block;"
+            size="<?= $maxLength ?>"
             ><?php endforeach ?>
     </div>
     <input type="hidden" id="combined__<?= $this->escape($element->name) ?>">
