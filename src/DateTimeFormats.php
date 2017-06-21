@@ -98,7 +98,9 @@ class DateTimeFormats
             return $result;
         }, '');
 
-        return ! \DateTime::createFromFormat($format, $combined) ? '' : $combined;
+        $parsedDate = \DateTime::createFromFormat($format, $combined);
+
+        return ! $parsedDate ? '' : $parsedDate->format($format);
     }
 
     public static function placeholders($format)
