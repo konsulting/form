@@ -155,11 +155,16 @@ class Element implements ElementInterface
         return isset($this->attributes[$name]) ? $this->attributes[$name] : null;
     }
 
-    public function __toString()
+    public function toHtml()
     {
         return trim($this->partial->render($this->partialName, [
             'element' => $this
         ]));
+    }
+
+    public function __toString()
+    {
+        return $this->toHtml();
     }
 
     public function attributes()

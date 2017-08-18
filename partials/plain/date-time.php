@@ -3,7 +3,9 @@
 <?php if ($element->split == false) : ?>
     <input type="<?= $element->timeFormat() ?>"<?= $element->attributes() ?>>
 <?php else : ?>
+    <?php $count = 0 ?>
     <?php foreach ($element->getSplitValue() as $name => $value) : ?>
-        <input type="text" name="<?= $this->escape($element->name) ?>[<?= $this->escape($name) ?>]" value="<?= $this->escape($value) ?>" placeholder="<?= $element->getSplitPlaceholders()[$name] ?>" maxlength="<?= strlen($element->getSplitPlaceholders()[$name]) ?>">
+        <?php $count++ ?>
+        <input type="text" id="<?= $this->escape($element->id) . ($count == 1 ? '' : '_' . $count) ?>" name="<?= $this->escape($element->name) ?>[<?= $this->escape($name) ?>]" value="<?= $this->escape($value) ?>" placeholder="<?= $element->getSplitPlaceholders()[$name] ?>" maxlength="<?= strlen($element->getSplitPlaceholders()[$name]) ?>">
     <?php endforeach ?>
 <?php endif ?>

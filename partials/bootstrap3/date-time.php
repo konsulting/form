@@ -19,6 +19,7 @@
             $maxLength = strlen($element->getSplitPlaceholders()[$name]);
                 ?><input
             type="text"
+            id="<?= $this->escape($element->id) . ($count == 1 ? '' : '_' . $count) ?>"
             name="<?= $this->escape($element->name) ?>[<?= $this->escape($name) ?>]"
             value="<?= $this->escape($value) ?>"
             placeholder="<?= $element->getSplitPlaceholders()[$name] ?>"

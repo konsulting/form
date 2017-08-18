@@ -11,8 +11,8 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input2 = new Input($this->partialsEngine, 'email', 'test');
 
-        $this->assertRegexp('|input type="text"|', (string) $input);
-        $this->assertRegexp('|input type="email"|', (string) $input2);
+        $this->assertRegexp('|input.*type="text"|', (string) $input);
+        $this->assertRegexp('|input.*type="email"|', (string) $input2);
     }
 
     public function test_it_will_add_a_label()

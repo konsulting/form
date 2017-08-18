@@ -10,6 +10,6 @@ class ButtonTest extends TestCase
     {
         $button = new Button($this->partialsEngine, 'submit', 'Text');
 
-        $this->assertRegExp('|<button type="submit"\s*>\s*Text\s*</button>|', (string) $button);
+        $this->assertRegExp('|<button id="[^\"]*" type="submit"\s*>\s*Text\s*</button>|', (string) $button);
     }
 }

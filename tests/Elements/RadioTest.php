@@ -10,6 +10,6 @@ class RadioTest extends TestCase
     {
         $button = new Radio($this->partialsEngine, 'test');
 
-        $this->assertRegExp('|<label>\s*<input type="radio" name="test" value=""\s*>\s*Test\s*</label>|', (string) $button);
+        $this->assertRegExp('|<label>\s*<input id="[^\"]*" type="radio" name="test" value=""\s*>\s*Test\s*</label>|', (string) $button);
     }
 }
