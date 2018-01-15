@@ -2,6 +2,8 @@
 
 *A library to simplify form building in php applications. It uses a template approach, supplied by [Plates](http://platesphp.com). It is inspired by the [Laravel Collective Form library](https://laravelcollective.com/docs/5.3/html) and a previous generations of form builder developed by Konsulting.*
 
+You can use the library in any PHP project, but we have included some helpers for usage within a Laravel Project.
+
 *Documentation is still being developed, so please bear with us.*
 
 ## Installation
@@ -10,9 +12,32 @@ We recommend using composer to install the library.
 
 `composer require konsulting/form-builder`
 
-If you are using Laravel, we recommend using the konsulting/laravel-form-builder package. It adds some assistance, such as populating errors for you.
+## Usage with Laravel
 
-## Usage
+The package will auto-register the Service Provider and Facade in Laravel 5.5+. In earlier versions of Laravel, you
+will need to manually register them yourself in your `config/app.php`.
+
+```php
+"providers" => [
+    ...
+    "Konsulting\\FormBuilder\\Laravel\\FormBuilderServiceProvider"
+],
+
+"aliases" => [
+    ...
+    "Form" => "Konsulting\\FormBuilder\\Laravel\\FormBuilderFacade"
+]
+```
+
+You will then be able to access the FormBuilder instance though the Facade in your views (or anywhere else you need to).
+
+```php
+// For example
+Form::text('name', $yourName)->withLabel('Your Name')
+
+```
+
+## Usage outside Laravel
 
 To begin using the form builder, you need to construct it using the Plates Engine (which essentially tells it which templates to use) and a class resolver (which effectively tells the build where to look for each form elements' class).
 
