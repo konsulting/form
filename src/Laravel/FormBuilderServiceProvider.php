@@ -18,7 +18,7 @@ class FormBuilderServiceProvider extends BaseServiceProvider
     {
         $this->app->singleton(BaseFormBuilder::class, function () {
             return (new FormBuilder(
-                new Engine(__DIR__ . '/../../form-builder/partials/bootstrap3'),
+                new Engine(__DIR__ . '/../../partials/bootstrap3'),
                 new ClassResolver('Konsulting\\FormBuilder\\Elements\\')
             ))->addDecorators(config('laravel-form-builder.decorators'));
         });
