@@ -4,7 +4,7 @@ namespace Konsulting\FormBuilder;
 
 use Konsulting\Laravel\Transformer\RulePacks\RulePack;
 
-class DatetimeRulePack extends RulePack
+class DateTimeRulePack extends RulePack
 {
     public function ruleToPersistFormat($value, $type = 'datetime')
     {

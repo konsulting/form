@@ -14,7 +14,11 @@
     },
     "require-dev": {
         "laravel/framework": "^5.3",
-        "phpunit/phpunit": "^5.6"
+        "phpunit/phpunit": "^5.6",
+        "konsulting/laravel-transformer": "^0.5.2"
+    },
+    "suggest": {
+        "konsulting/laravel-transformer": "Tranform Request data simply, recommended for use with DateTimeRulePack"
     },
     "autoload": {
         "psr-4": {
