@@ -5,5 +5,7 @@ return [
         'Konsulting\\FormBuilder\\Elements\\',
     ],
     'templates' => __DIR__ . '/../partials/bootstrap3',
-    'decorators' => [],
+    'decorators' => [
+        \Konsulting\FormBuilder\Laravel\HtmlableElementDecorator::class,
+    ],
 ];
