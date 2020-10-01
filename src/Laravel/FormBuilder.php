@@ -59,6 +59,6 @@ class FormBuilder extends BaseFormBuilder
 
     protected function dotFormat($name)
     {
-        return str_replace(['[', ']'], ['.', ''], $name);
+        return str_replace(['[]', '[', ']'], ['', '.', ''], $name);
     }
 }
