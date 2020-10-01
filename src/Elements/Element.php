@@ -5,8 +5,9 @@ namespace Konsulting\FormBuilder\Elements;
 use Illuminate\Support\Collection;
 use Konsulting\FormBuilder\FormBuilder;
 use League\Plates\Engine;
+use Tightenco\Collect\Contracts\Support\Htmlable;
 
-class Element implements ElementInterface
+class Element implements ElementInterface, Htmlable
 {
     protected $label;
     protected $showLabel = true;
