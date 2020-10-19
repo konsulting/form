@@ -149,7 +149,9 @@ class ElementDecorator implements ElementInterface
 
     public function wire($action, $value)
     {
-        return $this->element->wire($action, $value);
+        $this->element->wire($action, $value);
+
+        return $this;
     }
 
     public function withAddon($content, $position = 'after')
