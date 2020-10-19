@@ -102,13 +102,35 @@ class Element implements ElementInterface
         return $this;
     }
 
+    public function withAttribute($attribute, $value)
+    {
+        $possibleMethod = 'with'.ucfirst($attribute);
+
+        if (method_exists($this, $possibleMethod)) {
+            $this->{$possibleMethod}($value);
+            return;
+        }
+
+        if (in_array($this->writableProperties, $attribute, true)) {
+            $this->{$attribute} = $value;
+            return;
+        }
+
+        $this->attributes[$attribute] = $value;
+    }
+
     public function withAttributes($attributes = [])
     {
         foreach ($attributes as $attribute => $value) {
-            $this->{$attribute} = $value;
+            $this->withAttribute($attribute, $value);
         }
 
         return $this;
+    }
+
+    public function wire($action, $value)
+    {
+        return $this->withAttribute('wire:'.$action, $value);
     }
 
     public function withAddon($content, $position = 'after')

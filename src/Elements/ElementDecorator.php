@@ -133,11 +133,23 @@ class ElementDecorator implements ElementInterface
         return $this;
     }
 
+    public function withAttribute($attribute, $value)
+    {
+        $this->element->withAttribute($attribute, $value);
+
+        return $this;
+    }
+
     public function withAttributes($attributes = [])
     {
         $this->element->withAttributes($attributes);
 
         return $this;
+    }
+
+    public function wire($action, $value)
+    {
+        return $this->element->wire($action, $value);
     }
 
     public function withAddon($content, $position = 'after')
