@@ -108,15 +108,16 @@ class Element implements ElementInterface
 
         if (method_exists($this, $possibleMethod)) {
             $this->{$possibleMethod}($value);
-            return;
+            return $this;
         }
 
         if (in_array($this->writableProperties, $attribute, true)) {
             $this->{$attribute} = $value;
-            return;
+            return $this;
         }
 
         $this->attributes[$attribute] = $value;
+        return $this;
     }
 
     public function withAttributes($attributes = [])
