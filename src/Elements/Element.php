@@ -50,6 +50,11 @@ class Element implements ElementInterface
         return $this;
     }
 
+    public function label($label)
+    {
+        return $this->withLabel($label);
+    }
+
     public function withoutLabel()
     {
         $this->label = null;
@@ -129,8 +134,14 @@ class Element implements ElementInterface
         return $this;
     }
 
-    public function wire($action, $value)
+    public function wire($action, $value = null)
     {
+        // For wire:model calls the name of the linked property is likely to be the same
+        // as the field name, so allow a shorter syntax
+        if ($value === null && $this->name && strpos($action, 'model') === 0) {
+            $value = $this->name;
+        }
+
         return $this->withAttribute('wire:'.$action, $value);
     }
 
@@ -155,6 +166,11 @@ class Element implements ElementInterface
         return $this;
     }
 
+    public function disabled()
+    {
+        return $this->withAttribute('disabled', 'disabled');
+    }
+
     public function __set($name, $value)
     {
         if (property_exists($this, $name) && in_array($name, $this->writableProperties)) {
@@ -164,9 +180,18 @@ class Element implements ElementInterface
 
         $this->attributes[$name] = $value;
 
-        if ($name == 'name' && empty($this->label)) {
+        if ($name === 'name' && empty($this->label)) {
             $this->label = ucwords(str_replace('_', ' ', $value));
         }
+    }
+
+    public function __isset($name)
+    {
+        if (property_exists($this, $name) && in_array($name, $this->writableProperties)) {
+            return isset($this->{$name});
+        }
+
+        return isset($this->attributes[$name]);
     }
 
     public function __get($name)

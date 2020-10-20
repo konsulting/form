@@ -91,6 +91,13 @@ class ElementDecorator implements ElementInterface
         return $this;
     }
 
+    public function label($label)
+    {
+        $this->element->label($label);
+
+        return $this;
+    }
+
     public function withoutLabel()
     {
         $this->element->withoutLabel();
@@ -147,7 +154,7 @@ class ElementDecorator implements ElementInterface
         return $this;
     }
 
-    public function wire($action, $value)
+    public function wire($action, $value = null)
     {
         $this->element->wire($action, $value);
 
@@ -171,6 +178,13 @@ class ElementDecorator implements ElementInterface
     public function append($append)
     {
         $this->element->append($append);
+
+        return $this;
+    }
+
+    public function disabled()
+    {
+        $this->element->disabled();
 
         return $this;
     }
