@@ -181,7 +181,13 @@ class Element implements ElementInterface
         $this->attributes[$name] = $value;
 
         if ($name === 'name' && empty($this->label)) {
-            $this->label = ucwords(str_replace('_', ' ', $value));
+            $label = $value;
+            $prefixPosition = mb_strpos($label, '.');
+            if ($prefixPosition !== false) {
+                $label = mb_substr($label, $prefixPosition);
+            }
+
+            $this->label = ucwords(str_replace(['_id', '_'], ['', ' '], $label));
         }
     }
 
