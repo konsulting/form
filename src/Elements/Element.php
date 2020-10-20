@@ -139,7 +139,7 @@ class Element implements ElementInterface
         // For wire:model calls the name of the linked property is likely to be the same
         // as the field name, so allow a shorter syntax
         if ($value === null && $this->name && strpos($action, 'model') === 0) {
-            $value = $this->name;
+            $value = $this->builder->getWirePrefix().$this->name;
         }
 
         return $this->withAttribute('wire:'.$action, $value);

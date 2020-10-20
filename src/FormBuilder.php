@@ -9,6 +9,7 @@ class FormBuilder
     protected $decorators = [];
     protected $partial;
     protected $elementResolver;
+    protected $wirePrefix = '';
 
     // Perhaps should be in a separate Form object...
     protected $formName;
@@ -125,5 +126,18 @@ class FormBuilder
         }
 
         return $this->isHorizontal() ? $this->horizontalClasses[$class] : '';
+    }
+
+
+    public function setWirePrefix($prefix)
+    {
+        $this->wirePrefix = $prefix;
+
+        return $this;
+    }
+
+    public function getWirePrefix()
+    {
+        return $this->wirePrefix;
     }
 }
