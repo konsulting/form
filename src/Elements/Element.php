@@ -184,7 +184,7 @@ class Element implements ElementInterface
             $label = $value;
             $prefixPosition = mb_strpos($label, '.');
             if ($prefixPosition !== false) {
-                $label = mb_substr($label, $prefixPosition);
+                $label = mb_substr($label, $prefixPosition)+1;
             }
 
             $this->label = ucwords(str_replace(['_id', '_'], ['', ' '], $label));
