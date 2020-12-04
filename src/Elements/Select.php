@@ -77,6 +77,10 @@ class Select extends Element
 
     public function isSelected($value)
     {
+        if ($value === 0 || $value === '0') {
+            return $this->selected->containsStrict(0) || $this->selected->containsStrict('0');
+        }
+
         return $this->selected->contains($value);
     }
 }
