@@ -81,6 +81,8 @@ class Select extends Element
             return $this->selected->containsStrict(0) || $this->selected->containsStrict('0');
         }
 
-        return $this->selected->contains($value);
+        return $this->selected->reject(function ($v) {
+            return $v === 0 || $v === '0';
+        })->contains($value);
     }
 }
