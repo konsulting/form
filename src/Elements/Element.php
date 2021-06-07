@@ -116,7 +116,7 @@ class Element implements ElementInterface
             return $this;
         }
 
-        if (in_array($this->writableProperties, $attribute, true)) {
+        if (in_array($attribute, $this->writableProperties, true)) {
             $this->{$attribute} = $value;
             return $this;
         }
