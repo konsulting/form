@@ -9,6 +9,6 @@ class FormBuilderFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return static::$app->make(FormBuilder::class);
+        return FormBuilder::class;
     }
 }
