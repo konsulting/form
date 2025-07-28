@@ -18,9 +18,9 @@ class FormBuilderTest extends TestCase
         $builder = new FormBuilder($this->partialsEngine, $this->resolver);
 
         $this->assertInstanceOf(Input::class, $builder->text());
-        $this->assertRegExp('/type="text"/', (string) $builder->text());
+        $this->assertMatchesRegularExpression('/type="text"/', (string) $builder->text());
 
         $this->assertInstanceOf(Input::class, $builder->email());
-        $this->assertRegExp('/type="email"/', (string) $builder->email());
+        $this->assertMatchesRegularExpression('/type="email"/', (string) $builder->email());
     }
 }

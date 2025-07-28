@@ -10,7 +10,7 @@ class SelectTest extends TestCase
     {
         $select = new Select($this->partialsEngine, 'test', [0 => 'No', 1 => 'Yes'], 1);
 
-        $this->assertRegExp('|<select id="[^\"]*" name="test">|', (string) $select);
+        $this->assertMatchesRegularExpression('|<select id="[^\"]*" name="test">|', (string) $select);
     }
 
     public function test_it_will_convert_a_simple_array_of_options()

@@ -10,6 +10,6 @@ class TextareaTest extends TestCase
     {
         $select = new Textarea($this->partialsEngine, 'test', 'Text');
 
-        $this->assertRegExp('|<textarea id="[^\"]*" name="test">Text</textarea>|', (string) $select);
+        $this->assertMatchesRegularExpression('|<textarea id="[^\"]*" name="test">Text</textarea>|', (string) $select);
     }
 }

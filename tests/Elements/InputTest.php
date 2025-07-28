@@ -11,8 +11,8 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input2 = new Input($this->partialsEngine, 'email', 'test');
 
-        $this->assertRegexp('|input.*type="text"|', (string) $input);
-        $this->assertRegexp('|input.*type="email"|', (string) $input2);
+        $this->assertMatchesRegularExpression('|input.*type="text"|', (string) $input);
+        $this->assertMatchesRegularExpression('|input.*type="email"|', (string) $input2);
     }
 
     public function test_it_will_add_a_label()
@@ -20,7 +20,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->withLabel('Label');
 
-        $this->assertRegexp('/Label/', (string) $input);
+        $this->assertMatchesRegularExpression('/Label/', (string) $input);
     }
 
     public function test_it_will_add_a_help_block()
@@ -28,7 +28,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->withHelp('Help');
 
-        $this->assertRegexp('/Help/', (string) $input);
+        $this->assertMatchesRegularExpression('/Help/', (string) $input);
     }
 
     public function test_it_will_add_an_error()
@@ -36,7 +36,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->withError('Error');
 
-        $this->assertRegexp('/Error/', (string) $input);
+        $this->assertMatchesRegularExpression('/Error/', (string) $input);
     }
 
     public function test_it_will_add_feedback()
@@ -44,7 +44,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->withFeedback('success', 'Success');
 
-        $this->assertRegexp('/Success/', (string) $input);
+        $this->assertMatchesRegularExpression('/Success/', (string) $input);
     }
 
     public function test_it_will_add_a_block_before()
@@ -52,7 +52,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->prepend('Prepend');
 
-        $this->assertRegexp('/Prepend/', (string) $input);
+        $this->assertMatchesRegularExpression('/Prepend/', (string) $input);
     }
 
     public function test_it_will_add_a_block_after()
@@ -60,7 +60,7 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'text', 'test');
         $input->append('Append');
 
-        $this->assertRegexp('/Append/', (string) $input);
+        $this->assertMatchesRegularExpression('/Append/', (string) $input);
     }
 
     public function test_a_hidden_field_is_kept_simple()
@@ -68,6 +68,6 @@ class InputTest extends TestCase
         $input = new Input($this->partialsEngine, 'hidden', 'test');
         $input->withLabel('Label');
 
-        $this->assertNotRegexp('/Label/', (string) $input);
+        $this->assertDoesNotMatchRegularExpression('/Label/', (string) $input);
     }
 }

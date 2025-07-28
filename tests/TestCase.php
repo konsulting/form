@@ -3,13 +3,14 @@
 namespace Konsulting\FormBuilder;
 
 use League\Plates\Engine;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+abstract class TestCase extends BaseTestCase
 {
     protected $partialsEngine;
     protected $resolver;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

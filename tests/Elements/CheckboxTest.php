@@ -10,7 +10,7 @@ class CheckboxTest extends TestCase
     {
         $button = new Checkbox($this->partialsEngine, 'test');
 
-        $this->assertRegExp('|<label>\s*<input id="[^\"]*" type="checkbox" name="test" value="1"\s*>\s*Test\s*</label>|', (string) $button);
+        $this->assertMatchesRegularExpression('|<label>\s*<input id="[^\"]*" type="checkbox" name="test" value="1"\s*>\s*Test\s*</label>|', (string) $button);
     }
 
     public function test_it_adds_a_hidden_field_when_forcing_a_value()
@@ -19,6 +19,6 @@ class CheckboxTest extends TestCase
         $button->name = 'test';
         $button->forceValue(1);
 
-        $this->assertRegExp('|<input type="hidden" name="test" value="1"|', (string) $button);
+        $this->assertMatchesRegularExpression('|<input type="hidden" name="test" value="1"|', (string) $button);
     }
 }
