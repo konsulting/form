@@ -1,10 +1,10 @@
 <div class="field-wrapper">
     <?php if ($element->prepend) : ?>
-        <?= $element->prepend ?>
+        <?= $this->escape($element->prepend) ?>
     <?php endif ?>
 
     <?php if ($element->feedback): ?>
-        <div class="has-<?= $element->feedbackType ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
+        <div class="has-<?= $this->escape($element->feedbackType) ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
     <?php endif ?>
 
         <?php if ($element->builder() && $element->builder()->isHorizontal()) : ?>
@@ -43,6 +43,6 @@
         <?php endif ?>
 
     <?php if ($element->append) : ?>
-        <?= $element->append ?>
+        <?= $this->escape($element->append) ?>
     <?php endif ?>
 </div>

@@ -2,7 +2,7 @@
 <select<?= $element->attributes() ?>>
     <?php if ($element->isGrouped()) : ?>
         <?php foreach($element->options() as $group => $options) : ?>
-            <optgroup label="<?= $group ?>">
+            <optgroup label="<?= $this->escape($group) ?>">
                 <?= $this->insert('select-options', ['options' => $options, 'element' => $element]) ?>
             </optgroup>
         <?php endforeach ?>

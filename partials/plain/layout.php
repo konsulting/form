@@ -1,6 +1,6 @@
 <div class="field-wrapper">
     <?php if($element->prepend) : ?>
-        <?= $element->prepend ?>
+        <?= $this->escape($element->prepend) ?>
     <?php endif ?>
 
     <?php if ($element->label) : ?>
@@ -12,11 +12,11 @@
     <?php if (! $element->addons->isEmpty()) : ?>
         <div class="input-group">
             <?php foreach($element->addons->where('position', 'before') as $addon) : ?>
-                <?= (string) $addon['content'] ?>
+                <?= $this->escape((string) $addon['content']) ?>
             <?php endforeach ?>
             <?= $this->section('content') ?>
             <?php foreach($element->addons->where('position', 'after') as $addon) : ?>
-                <?= (string) $addon['content'] ?>
+                <?= $this->escape((string) $addon['content']) ?>
             <?php endforeach ?>
         </div>
     <?php else : ?>
@@ -24,7 +24,7 @@
     <?php endif ?>
 
     <?php if($element->feedback) : ?>
-        <div class="feedback-<?php $element->feedbackType ?>">
+        <div class="feedback-<?= $this->escape($element->feedbackType) ?>">
             <?= $this->escape($element->feedback) ?>
         </div>
     <?php endif ?>
@@ -36,6 +36,6 @@
     <?php endif ?>
 
     <?php if($element->append) : ?>
-        <?= $element->append ?>
+        <?= $this->escape($element->append) ?>
     <?php endif ?>
 </div>

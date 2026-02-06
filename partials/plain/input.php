@@ -5,6 +5,6 @@
     <input<?= $element->attributes() ?>>
 <?php else: ?>
     <p class="input-static" <?= $element->attributesExcept(['value', 'class']) ?>>
-        <?= $element->attributes()->get('value') ?>
+        <?= $this->escape($element->attributes()->get('value')) ?>
     </p>
 <?php endif ?>

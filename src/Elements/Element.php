@@ -43,6 +43,11 @@ class Element implements ElementInterface
         return $this;
     }
 
+    public function value($value)
+    {
+        return $this->withValue($value);
+    }
+
     public function withLabel($label)
     {
         $this->label = $label;
@@ -150,6 +155,11 @@ class Element implements ElementInterface
         $this->addons[] = compact('content', 'position');
 
         return $this;
+    }
+
+    public function addAddon($content, $position = 'after')
+    {
+        return $this->withAddon($content, $position);
     }
 
     public function prepend($prepend)

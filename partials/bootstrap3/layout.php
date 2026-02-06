@@ -1,11 +1,11 @@
 <div class="field-wrapper">
     <?php /* PREPEND */ ?>
     <?php if ($element->prepend) : ?>
-        <?= $element->prepend ?>
+        <?= $this->escape($element->prepend) ?>
     <?php endif ?>
 
     <?php /* LABEL */ ?>
-    <div class="form-group<?= $element->feedback ? ' has-' . $element->feedbackType : '' ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
+    <div class="form-group<?= $element->feedback ? ' has-' . $this->escape($element->feedbackType) : '' ?><?= $element->showFeedbackIcons ? ' has-feedback' : '' ?>">
         <?php if ($element->label) : ?>
             <label for="<?= $this->escape($element->getLabelFor()) ?>"
                    class="control-label <?= $element->builder() ? $element->builder()->horizontalClass('input') : '' ?>">
@@ -25,11 +25,11 @@
         <?php if ( ! $element->addons->isEmpty()) : ?>
             <div class="input-group">
                 <?php foreach ($element->addons->where('position', 'before') as $addon) : ?>
-                    <?= (string)$addon['content'] ?>
+                    <?= $this->escape((string)$addon['content']) ?>
                 <?php endforeach ?>
                 <?= $this->section('content') ?>
                 <?php foreach ($element->addons->where('position', 'after') as $addon) : ?>
-                    <?= (string)$addon['content'] ?>
+                    <?= $this->escape((string)$addon['content']) ?>
                 <?php endforeach ?>
             </div>
         <?php else : ?>
@@ -58,6 +58,6 @@
 
     <?php /* APPEND */ ?>
     <?php if ($element->append) : ?>
-        <?= $element->append ?>
+        <?= $this->escape($element->append) ?>
     <?php endif ?>
 </div>

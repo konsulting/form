@@ -1,6 +1,6 @@
 <div class="field-wrapper">
     <?php if($element->prepend) : ?>
-        <?= $element->prepend ?>
+        <?= $this->escape($element->prepend) ?>
     <?php endif ?>
 
     <label>
@@ -9,7 +9,7 @@
     </label>
 
     <?php if($element->feedback) : ?>
-        <div class="feedback-<?php $element->feedbackType ?>">
+        <div class="feedback-<?= $this->escape($element->feedbackType) ?>">
             <?= $this->escape($element->feedback) ?>
         </div>
     <?php endif ?>
@@ -21,6 +21,6 @@
     <?php endif ?>
 
     <?php if($element->append) : ?>
-        <?= $element->append ?>
+        <?= $this->escape($element->append) ?>
     <?php endif ?>
 </div>
